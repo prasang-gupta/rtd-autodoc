@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; How to Document in RTD 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/readthedocs-custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="module" href="_autosummary/module.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> How to Document in RTD
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-depth-implementation">In-depth implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generate-basic-documentation">Generate basic documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-configuration-file">Modifying configuration file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-makefile">Modifying Makefile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux-or-macos">Linux or MacOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-rst-files">Adding rst files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-and-dirty-implementation">Quick-and-Dirty implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-the-content-of-this-repository-directly">How to use the content of this repository directly</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-host-on-github-pages">How to host on Github Pages ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-document">How to Document?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inline-formattings">Inline formattings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numbered-and-bullet-list">Numbered and Bullet list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hyperlinks">Hyperlinks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-blocks">Code blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tables">Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sections">Sections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#this-is-a-subheading">This is a subheading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#this-is-a-subsubheading">This is a subsubheading</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#this-is-a-paragraph">This is a paragraph</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directives">Directives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/module.html">Python Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">How to Document in RTD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Usage</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
+<p>In this section, we will discuss the implementation details of the documentation.
+This includes getting the documentation ready locally and hosting it on github.</p>
+<p>We offer 2 solutions for this exercise:</p>
+<ul>
+<li><p>An <a class="reference internal" href="#in-depth-implementation"><span class="std std-ref">In-depth implementation</span></a> using <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code>.
+This would include you setting a lot of parameters with provided explanations for your use case.</p>
+<p><strong>(Recommended if you want to implement and learn at the same time and if you have some spare time on your hands OR if you already are a PRO)</strong></p>
+</li>
+<li><p>A <a class="reference internal" href="#quick-and-dirty-implementation"><span class="std std-ref">Quick-and-Dirty implementation</span></a> to get your documentation up and running.
+This would involve modifying an already implemented docs code swapping out sections with your case-specific details.</p>
+<p><strong>(Recommended if you don’t really care about what is happening in the background OR simply don’t have time)</strong></p>
+</li>
+</ul>
+<p>Before proceeding with any of the steps, make sure that you have installed the necessary packages from the <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> page.</p>
+<div class="section" id="in-depth-implementation">
+<h2>In-depth implementation<a class="headerlink" href="#in-depth-implementation" title="Permalink to this headline"></a></h2>
+<div class="section" id="generate-basic-documentation">
+<span id="generatebasic"></span><h3>Generate basic documentation<a class="headerlink" href="#generate-basic-documentation" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>Ensure that your repository is structured as</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">_</span> <span class="n">module</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="n">some_file</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is present in each directory within the main module.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The auto-summary requires proper docstrings to be written. Functions without docstrings would be ignored.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Create a folder named <code class="docutils literal notranslate"><span class="pre">docs</span></code> in the root directory, so that the structure of repo now is</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">|</span><span class="n">_</span> <span class="n">docs</span>
+</span><span class="o">|</span><span class="n">_</span> <span class="n">module</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="n">some_file</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> from inside the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder followed by <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>.
+This will auto-generate all necessary files required for a static documentation website.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> docs
+<span class="gp">$ </span>sphinx-quickstart
+
+<span class="go">&gt; Separate source and build directories (y/n) [n]: y   # This helps in organising the generated files into separate folders</span>
+<span class="go">&gt; Project name: &lt;Your Project name goes here&gt;</span>
+<span class="go">&gt; Author name(s): &lt;Comma separated author names go here&gt;</span>
+<span class="go">&gt; Project release []: &lt;Version of the module goes here&gt;</span>
+
+<span class="gp">$ </span>make html
+</pre></div>
+</div>
+<p>Files/Folders generated and their functions are listed below</p>
+<dl class="glossary simple">
+<dt id="term-build">build<a class="headerlink" href="#term-build" title="Permalink to this term"></a></dt><dd><p>This folder contains HTML files for the static website.</p>
+</dd>
+<dt id="term-source">source<a class="headerlink" href="#term-source" title="Permalink to this term"></a></dt><dd><p>This folder contains all the source files needed to build the documentation (rst and configuration files)</p>
+</dd>
+<dt id="term-Makefile">Makefile<a class="headerlink" href="#term-Makefile" title="Permalink to this term"></a></dt><dd><p>Makefile for Linux/MacOS and Windows are provided to build the static documentation files (<strong>build</strong>) from the source files (<strong>source</strong>).</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>At this stage, your documentation would look like this: (You can check by opening <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>)</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/indepth_doc_stage1.png" src="_images/indepth_doc_stage1.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="modifying-configuration-file">
+<h3>Modifying configuration file<a class="headerlink" href="#modifying-configuration-file" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>If you have installed the python module i.e. if you have installed it via <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code> you <strong>don’t have to do this</strong> but
+if you have not installed it then you have to add the following lines to your <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> so that it can find your code references:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;./../../&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The abspath needs to be provided for the root of the repository (where the module folder is present) which in our case is <code class="docutils literal notranslate"><span class="pre">'./../../'</span></code>.
+This is needed for the autodoc to auto-generate documentation for the code part.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Change the value of copyright variable</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">copyright</span> <span class="o">=</span> <span class="s1">&#39;2021, Emerging Technologies&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Add the required extensions in the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> section</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>           <span class="c1"># for generating documentation from docstrings</span>
+    <span class="s1">&#39;sphinx.ext.autosummary&#39;</span><span class="p">,</span>       <span class="c1"># generate summaries for autodoc</span>
+    <span class="s1">&#39;sphinx.ext.autosectionlabel&#39;</span><span class="p">,</span>  <span class="c1"># allow reference sections to use titles</span>
+    <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>       <span class="c1"># link to other project documentations</span>
+    <span class="s1">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>          <span class="c1"># add links to python source code for documentation</span>
+    <span class="s1">&#39;sphinx_autodoc_typehints&#39;</span><span class="p">,</span>     <span class="c1"># automatically document param types</span>
+    <span class="s1">&#39;nbsphinx&#39;</span><span class="p">,</span>                     <span class="c1"># integrate with jupyter notebooks</span>
+    <span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">,</span>          <span class="c1"># support for numpy and google docstrings</span>
+    <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>          <span class="c1"># collect document coverage</span>
+    <span class="s1">&#39;sphinx_rtd_theme&#39;</span>              <span class="c1"># RTD theme</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We have provided here the extensions that would be enough for most purposes.
+However, for advanced modifications, you may need to include additional extensions.</p>
+</div>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/index.html">Sphinx’s extension page</a> has more extensions and details about each if you want to get creative !</p>
+</div></blockquote>
+</li>
+<li><p>Add some variables</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>                     <span class="c1"># documents to be included for intersphinx functionality</span>
+    <span class="s2">&quot;python&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;https://docs.python.org/3/&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="n">autosummary_generate</span> <span class="o">=</span> <span class="kc">True</span>                 <span class="c1"># turn on autosummary generation</span>
+<span class="n">autosummary_generate_overwrite</span> <span class="o">=</span> <span class="kc">True</span>       <span class="c1"># turn on overwriting for subsequent builds</span>
+<span class="n">autoclass_content</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span>                  <span class="c1"># add __init__ doc (ie. params) to class summaries</span>
+<span class="n">html_show_sourcelink</span> <span class="o">=</span> <span class="kc">False</span>                <span class="c1"># remove &#39;view source code&#39; from top of page (for html, not python)</span>
+<span class="n">autodoc_inherit_docstrings</span> <span class="o">=</span> <span class="kc">True</span>           <span class="c1"># if no docstring, inherit from base class</span>
+<span class="n">set_type_checking_flag</span> <span class="o">=</span> <span class="kc">True</span>               <span class="c1"># enable &#39;expensive&#39; imports for sphinx_autodoc_typehints</span>
+<span class="n">nbsphinx_allow_errors</span> <span class="o">=</span> <span class="kc">True</span>                <span class="c1"># continue through Jupyter errors</span>
+<span class="n">add_module_names</span> <span class="o">=</span> <span class="kc">False</span>                    <span class="c1"># remove namespaces from class/method signatures</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Update the theme by replacing the</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span>
+</pre></div>
+</div>
+<p>line of code with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+    <span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+    <span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">sphinx_rtd_theme</span><span class="o">.</span><span class="n">get_html_theme_path</span><span class="p">()]</span>
+    <span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;readthedocs-custom.css&quot;</span><span class="p">]</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span>
+</pre></div>
+</div>
+<p>This would render the documentation in the RTD theme.
+If however, some error is encountered in loading the theme, it would fall back to the <code class="docutils literal notranslate"><span class="pre">alabaster</span></code> theme supported out of the box by Sphinx.</p>
+</div></blockquote>
+</li>
+<li><p>Update your documentation by running the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> command again from the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory.
+At this stage, your documentation would look like this: (You can check by opening <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>)</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/indepth_doc_stage2.png" src="_images/indepth_doc_stage2.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="modifying-makefile">
+<h3>Modifying Makefile<a class="headerlink" href="#modifying-makefile" title="Permalink to this headline"></a></h3>
+<p>There are two makefiles which generate after you run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code></p>
+<ul class="simple">
+<li><p><strong>Makefile</strong>: This makefile is used in Linux or MacOS</p></li>
+<li><p><strong>make.bat</strong>: This makefile is used in Windows</p></li>
+</ul>
+<p>So based on which Operating System you are on, you need to modify the corresponding file</p>
+<div class="section" id="linux-or-macos">
+<h4>Linux or MacOS<a class="headerlink" href="#linux-or-macos" title="Permalink to this headline"></a></h4>
+<p>In this case we need to replace the line below <code class="docutils literal notranslate"><span class="pre">%:</span> <span class="pre">Makefile</span></code> section so that it becomes:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -M <span class="nv">$@</span> <span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="k">$(</span>SPHINXOPTS<span class="k">)</span> <span class="k">$(</span>O<span class="k">)</span><span class="p">;</span> touch .nojekyll<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=./build/html/index.html&quot; /&gt;&#39;</span> &gt; index.html
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You might run into an error saying: <code class="docutils literal notranslate"><span class="pre">make:</span> <span class="pre">***</span> <span class="pre">No</span> <span class="pre">rule</span> <span class="pre">to</span> <span class="pre">make</span> <span class="pre">target</span> <span class="pre">`html'.</span>&#160; <span class="pre">Stop</span></code>.
+If this happens, you need to just correct the indentation and make sure that it starts with a tab rather than spaces.
+(This is a GNU make dependency)</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="windows">
+<h4>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h4>
+<p>In this case we need to add two lines before <code class="docutils literal notranslate"><span class="pre">goto</span> <span class="pre">end</span></code> so that it becomes:</p>
+<blockquote>
+<div><div class="highlight-batch notranslate"><div class="highlight"><pre><span></span><span class="nv">%SPHINXBUILD%</span> -M <span class="nv">%1</span> <span class="nv">%SOURCEDIR%</span> <span class="nv">%BUILDDIR%</span> <span class="nv">%SPHINXOPTS%</span> <span class="nv">%O%</span>
+<span class="k">type</span> NUL <span class="p">&gt;</span> .nojekyll
+<span class="k">echo</span> <span class="se">^&lt;</span>meta http-equiv=<span class="s2">&quot;refresh&quot;</span> content=<span class="s2">&quot;0; url=./build/html/index.html&quot;</span> /<span class="se">^&gt;</span>  <span class="p">&gt;</span> index.html
+<span class="k">goto</span> <span class="nl">end</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Explanation for adding these two lines:</p>
+<ul class="simple">
+<li><p>As we are not using <em>Jekyll</em> theme in our project we need to create a <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> file in the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> folder</p></li>
+<li><p>Now as we have added a <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> file, <em>github pages</em> will try to find a <code class="docutils literal notranslate"><span class="pre">.html</span></code> file in the root directory (i.e. <code class="docutils literal notranslate"><span class="pre">docs</span></code> which we will select in <a class="reference internal" href="#github-pages"><span class="std std-ref">How to host on Github Pages ?</span></a>, but our page is present in <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>. So we need a helper page which can redirect to the main build page in <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder. For that we create a new <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file in <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="adding-rst-files">
+<h3>Adding rst files<a class="headerlink" href="#adding-rst-files" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">api.rst</span></code> inside the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory with the following content.
+This file is responsible for creating the autogenerated documentation for the python module.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span>
+<span class="o">======</span>
+
+<span class="o">..</span> <span class="n">autosummary</span><span class="p">::</span>
+    <span class="p">:</span><span class="n">toctree</span><span class="p">:</span> <span class="n">_autosummary</span>
+    <span class="p">:</span><span class="n">template</span><span class="p">:</span> <span class="n">custom</span><span class="o">-</span><span class="n">module</span><span class="o">-</span><span class="n">template</span><span class="o">.</span><span class="n">rst</span>
+    <span class="p">:</span><span class="n">recursive</span><span class="p">:</span>
+
+<span class="hll">    <span class="n">module</span>
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">module</span></code> with the directory name of your python module / toolkit</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We recommend using a template for docstring documentation as default function documentation is not very readable.
+You can copy the <code class="docutils literal notranslate"><span class="pre">source/_templates</span></code> folder from the parent repository of this documentation or you can use this <a class="reference external" href="https://drive.google.com/drive/folders/1w6lrybpvAozJbfDvuCfj2B8vbkhoFPW_?usp=sharing">drive link</a>
+to manually download the folder and put it in the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory.
+If you do not plan on using this template, REMOVE THIS LINE: <code class="docutils literal notranslate"><span class="pre">:template:</span> <span class="pre">custom-module-template.rst</span></code> from the <code class="docutils literal notranslate"><span class="pre">api.rst</span></code> file.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>It is recommended that there are certain sections that are added to the documentation.
+We recommend to add the following sections and hence, create an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file for each in the same <code class="docutils literal notranslate"><span class="pre">source</span></code> directory.</p>
+<blockquote>
+<div><dl class="glossary simple">
+<dt id="term-installation.rst"><code class="docutils literal notranslate"><span class="pre">installation.rst</span></code><a class="headerlink" href="#term-installation.rst" title="Permalink to this term"></a></dt><dd><p>Steps to install the dependencies and the package itself with warnings and solutions to common installation problems</p>
+</dd>
+<dt id="term-changelogs.rst"><code class="docutils literal notranslate"><span class="pre">changelogs.rst</span></code><a class="headerlink" href="#term-changelogs.rst" title="Permalink to this term"></a></dt><dd><p>Changelogs is an important part of version management to allow rollbacks and efficient debugging</p>
+</dd>
+<dt id="term-references.rst"><code class="docutils literal notranslate"><span class="pre">references.rst</span></code><a class="headerlink" href="#term-references.rst" title="Permalink to this term"></a></dt><dd><p>References used for the package development with URLs</p>
+</dd>
+</dl>
+<p>Each of these files will be of the form</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HEADING
+=======
+
+Content here in appropriate format
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Replace the contents of the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file with the following.
+This is done to adhere to a standard style of formatting the main file and section it in a readable format.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    Home &lt;self&gt;
+    Installation &lt;installation&gt;
+    Module / Toolkit &lt;_autosummary/module&gt;
+    Changelogs &lt;changelogs&gt;
+    References &lt;references&gt;
+
+NAME OF THE TOOLKIT
+===================
+
+Content to be shown on the main documentation page
+
+...
+
+Authors : Author 1, Author 2, ...
+</pre></div>
+</div>
+<ul>
+<li><p>This section here starts the Sphinx TOC tree.
+The <code class="docutils literal notranslate"><span class="pre">maxdepth</span></code> parameter sets the maximum depth for the tree.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.. toctree::
+    :hidden:
+    :maxdepth: 3
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>This section lists the entries to populate the left pane of the documentation.
+The format followed here is <code class="docutils literal notranslate"><span class="pre">XXX</span> <span class="pre">&lt;YYY&gt;</span></code> where <code class="docutils literal notranslate"><span class="pre">XXX</span></code> is the name that will be displayed on the left pane
+and <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is the name of the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file present in the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory which will be displayed when a user goes to that section.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Home &lt;self&gt;
+Installation &lt;installation&gt;
+Module / Toolkit &lt;_autosummary/module&gt;
+Changelogs &lt;changelogs&gt;
+References &lt;references&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Include any and all sections that need to be added based on the format.
+The <code class="docutils literal notranslate"><span class="pre">_autosummary/module</span></code> format is for the autogenerated docstrings documentation where <code class="docutils literal notranslate"><span class="pre">module</span></code> needs to be replaced with the name of the python toolkit directory.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>The rest of the section follows the same structure as the rest of the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Update your documentation by running the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> command again from the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory.
+At this stage, your documentation would look like this: (You can check by opening <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>)</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/indepth_doc_stage3.png" src="_images/indepth_doc_stage3.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="quick-and-dirty-implementation">
+<h2>Quick-and-Dirty implementation<a class="headerlink" href="#quick-and-dirty-implementation" title="Permalink to this headline"></a></h2>
+<div class="section" id="how-to-use-the-content-of-this-repository-directly">
+<h3>How to use the content of this repository directly<a class="headerlink" href="#how-to-use-the-content-of-this-repository-directly" title="Permalink to this headline"></a></h3>
+<p>If you do not care about what is happening in the background and want a very rapid documentation with all the basic components, the following steps will help.</p>
+<ul>
+<li><dl>
+<dt>Step 1</dt><dd><p>The structure of your repository should have the following structure. For this example we will call this module <strong>abracadabra</strong>.</p>
+<blockquote>
+<div><p><strong>Before</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">_</span> <span class="n">abracadabra</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="n">some_file</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Now copy the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder of <a class="reference external" href="https://github.pwc.com/AIA/howto-read-the-docs">this repository</a> in the root directory of your repository containing the python module. So the structure of the repository will become</p>
+<blockquote>
+<div><p><strong>After</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">|</span><span class="n">_</span> <span class="n">docs</span>
+</span><span class="o">|</span><span class="n">_</span> <span class="n">abracadabra</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="n">some_file</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|</span>  <span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">|</span><span class="n">_</span> <span class="o">....</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Step 2</dt><dd><p>Delete all the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files inside <code class="docutils literal notranslate"><span class="pre">docs/source/_autosummary</span></code> as it contains the documentation of the python module of this repository.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Step 3</dt><dd><ul>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> you can find a section called <strong>SECTION TO EDIT</strong> where you can edit the fields according to your project</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>project</p></li>
+<li><p>copyright</p></li>
+<li><p>author</p></li>
+<li><p>release</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have installed the module with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code> then you need to remove <code class="docutils literal notranslate"><span class="pre">sys.path.insert(0,</span> <span class="pre">os.path.abspath('./../../'))</span></code> from <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code>. This is to ensure there is no conflict between the installed module and the module in this repository.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/index.rst</span></code> change:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Content of the introductory section</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">module</span></code> to <code class="docutils literal notranslate"><span class="pre">abracadabra</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;_autosummary/module&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;_autosummary/abracadabra&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/api.rst</span></code> change:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span></code> to <code class="docutils literal notranslate"><span class="pre">abracadabra</span></code> (i.e. the name of your module or the folder from where autosummary will start generating automated documentations)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/installation.rst</span></code> add the steps of your installation.</p></li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/usage.rst</span></code> delete everything and add instructions on how to use your repository.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not want any <strong>Usage</strong> section in your repository, you can remove this <code class="docutils literal notranslate"><span class="pre">usage.rst</span></code> file and remove the line <code class="docutils literal notranslate"><span class="pre">Usage</span> <span class="pre">&lt;usage&gt;</span></code> from <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">docs/source/changelogs.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">docs/source/references.rst</span></code> add your changelogs and references respectively.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Step 4</dt><dd><ul>
+<li><p>Now we need to run the make command to build the html files:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> docs
+<span class="gp">$ </span>make clean  <span class="c1"># This step is to remove all the prebaked files and folders which are not necessary</span>
+<span class="gp">$ </span>make html
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>After you complete the following you can see the documentation if you open <code class="docutils literal notranslate"><span class="pre">docs/index.html</span></code> in any supported browser.</p>
+</div>
+</div>
+<div class="section" id="how-to-host-on-github-pages">
+<span id="github-pages"></span><h2>How to host on Github Pages ?<a class="headerlink" href="#how-to-host-on-github-pages" title="Permalink to this headline"></a></h2>
+<p>To host this page on github pages we have to follow the following steps:</p>
+<ul>
+<li><p>Push all the files to <code class="docutils literal notranslate"><span class="pre">github.pwc.com</span></code></p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git add docs/*
+<span class="gp">$ </span>git add docs/.nojekyll
+<span class="gp">$ </span>git commit -m &lt;message&gt;
+<span class="gp">$ </span>git push
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Go to the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> tab on the upper right section of your github repository</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/Github_pages_1.png" src="_images/Github_pages_1.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Go down to the GitHub Pages section</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Source</span></code> section select the <code class="docutils literal notranslate"><span class="pre">branch</span></code> (whichever branch you pushed the files in the previous step) and after that choose the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> folder. Then click on <code class="docutils literal notranslate"><span class="pre">Save</span></code></p></li>
+<li><p>Now an URL will be generated with a note <code class="docutils literal notranslate"><span class="pre">Your</span> <span class="pre">site</span> <span class="pre">is</span> <span class="pre">published</span> <span class="pre">at</span> <span class="pre">&lt;URL&gt;</span></code>, Click on the same.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/Github_pages_2.png" src="_images/Github_pages_2.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Voila ! Your documentation is ready.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/Github_pages_3.png" src="_images/Github_pages_3.png" />
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="how-to-document">
+<h2>How to Document?<a class="headerlink" href="#how-to-document" title="Permalink to this headline"></a></h2>
+<p>In this section we have consolidated all the most commonly used sphinx syntaxes used in various parts of documentation. You can choose a snippet and add it in your documentation.</p>
+<div class="section" id="inline-formattings">
+<span id="inline-formatting"></span><h3>Inline formattings<a class="headerlink" href="#inline-formattings" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>one asterisk: <code class="docutils literal notranslate"><span class="pre">*text*</span></code> for Italic. <em>text</em></p></li>
+<li><p>two asterisks: <code class="docutils literal notranslate"><span class="pre">**text**</span></code> for Bold. <strong>text</strong></p></li>
+<li><p>backquotes: <code class="docutils literal notranslate"><span class="pre">``text``</span></code> for code samples. <code class="docutils literal notranslate"><span class="pre">text</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="numbered-and-bullet-list">
+<h3>Numbered and Bullet list<a class="headerlink" href="#numbered-and-bullet-list" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li><p>This is a numbered list.</p></li>
+<li><p>It has two items too.</p></li>
+<li><p>This is a numbered list using <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+</ol>
+<ul>
+<li><p>First bullet</p></li>
+<li><p>Second bullet</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A nested list with a space above</p></li>
+<li><p>and some subitems</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Third bullet</dt><dd><ul class="simple">
+<li><p>Nested list without space</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="hyperlinks">
+<h3>Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permalink to this headline"></a></h3>
+<p>This is an <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">hyperlink</a></p>
+<p>This is an internal reference <a class="reference internal" href="#inline-formatting"><span class="std std-ref">Inline formattings</span></a></p>
+</div>
+<div class="section" id="code-blocks">
+<h3>Code blocks<a class="headerlink" href="#code-blocks" title="Permalink to this headline"></a></h3>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">::</span></code> at the end of paragraph and indenting them with <em>4 spaces</em> results in a code block as below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Code</span> <span class="n">block</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Code</span> <span class="n">block</span> <span class="n">line</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tables">
+<h3>Tables<a class="headerlink" href="#tables" title="Permalink to this headline"></a></h3>
+<p>Grid Table</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Header row, column 1
+(header rows optional)</p></th>
+<th class="head"><p>Header 2</p></th>
+<th class="head"><p>Header 3</p></th>
+<th class="head"><p>Header 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>body row 1, column 1</p></td>
+<td><p>column 2</p></td>
+<td><p>column 3</p></td>
+<td><p>column 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>body row 2</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Simple Table</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A and B</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="sections">
+<h3>Sections<a class="headerlink" href="#sections" title="Permalink to this headline"></a></h3>
+<p>This is a heading:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Heading</span>
+<span class="o">=================</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="this-is-a-subheading">
+<h2>This is a subheading<a class="headerlink" href="#this-is-a-subheading" title="Permalink to this headline"></a></h2>
+<div class="section" id="this-is-a-subsubheading">
+<h3>This is a subsubheading<a class="headerlink" href="#this-is-a-subsubheading" title="Permalink to this headline"></a></h3>
+<div class="section" id="this-is-a-paragraph">
+<h4>This is a paragraph<a class="headerlink" href="#this-is-a-paragraph" title="Permalink to this headline"></a></h4>
+<div class="section" id="this-is-a-part">
+<h5>This is a part<a class="headerlink" href="#this-is-a-part" title="Permalink to this headline"></a></h5>
+<div class="section" id="this-is-a-chapter">
+<h6>This is a chapter<a class="headerlink" href="#this-is-a-chapter" title="Permalink to this headline"></a></h6>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a Heading is defined it will add a section in the side bar, so it is enclosed in a block in the above example</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="roles">
+<h3>Roles<a class="headerlink" href="#roles" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><em>emphasis</em></p></li>
+<li><p><strong>strong</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">literal</span></code></p></li>
+<li><p><sub>subscript text</sub></p></li>
+<li><p><sup>superscript text</sup></p></li>
+<li><p><cite>for titles of books, periodicals, and other materials</cite></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^2 + b^2 = c^2\)</span>.</p></li>
+<li><p><span class="menuselection">Start ‣ Programs</span></p></li>
+</ul>
+<p>For more <strong>roles</strong> please visit <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html">here</a></p>
+</div>
+<div class="section" id="directives">
+<h3>Directives<a class="headerlink" href="#directives" title="Permalink to this headline"></a></h3>
+<p>This is a figure.</p>
+<div class="figure align-center" id="id2">
+<a class="reference external image-reference" href="https://www.google.com/search?q=deep+learning+&amp;tbm=isch&amp;ved=2ahUKEwj24NyX1K70AhUmD1kFHS2LCH4Q2-cCegQIABAA&amp;oq=deep+learning+&amp;gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CAgAELEDEIMBOggIABCABBCxAzoECAAQAzoECAAQQzoHCAAQsQMQQzoLCAAQgAQQsQMQgwFQ1gdY6BhguiJoAHAAeACAAesCiAGxJZIBBDMtMTWYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&amp;sclient=img&amp;ei=oPWcYfaQGqae5NoPrZai8Ac&amp;bih=722&amp;biw=1536&amp;rlz=1C1GCEA_enIN979IN979#imgrc=EpN1KteHpbsUhM"><img alt="_images/Sample.jpg" src="_images/Sample.jpg" /></a>
+<p class="caption"><span class="caption-text">This is the caption</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<div class="legend">
+<p>This is a legend</p>
+</div>
+</div>
+<p>This is a code block</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+    <span class="s2">&quot;Loren Ipsum&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a math block</p>
+<div class="math notranslate nohighlight">
+\[α_t(i) = P(O_1, O_2, … O_t, q_t = S_i λ)\]</div>
+<p>This is a note</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a note</p>
+</div>
+<p>This is a warning</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a warning</p>
+</div>
+<ul>
+<li><p>This is to add a version</p>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 2.5: </span>The version is 2.5</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>This is to note down version changes</p>
+<blockquote>
+<div><div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.6: </span>The version changed</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>This is to show deprecated functions</p>
+<blockquote>
+<div><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.1: </span>Use <code class="xref py py-func docutils literal notranslate"><span class="pre">demo()</span></code> instead.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>This is a glossary</p>
+<blockquote>
+<div><dl class="glossary simple">
+<dt id="term-Term-1">Term 1<a class="headerlink" href="#term-Term-1" title="Permalink to this term"></a></dt><dd><p>Definition of term 1.</p>
+</dd>
+<dt id="term-Term-2">Term 2<a class="headerlink" href="#term-Term-2" title="Permalink to this term"></a></dt><dd><p>Definition of term 2.</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+<p>For more <strong>directives</strong> please visit <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html">here</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="_autosummary/module.html" class="btn btn-neutral float-right" title="module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Emerging Technologies.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
