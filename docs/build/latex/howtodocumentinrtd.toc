@@ -1,0 +1,46 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Installation}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Usage}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}In\sphinxhyphen {}depth implementation}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Generate basic documentation}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Modifying configuration file}{6}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Modifying Makefile}{9}{subsection.2.1.3}%
+\contentsline {subsubsection}{Linux or MacOS}{9}{subsubsection*.6}%
+\contentsline {subsubsection}{Windows}{10}{subsubsection*.7}%
+\contentsline {subsection}{\numberline {2.1.4}Adding rst files}{10}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Quick\sphinxhyphen {}and\sphinxhyphen {}Dirty implementation}{12}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}How to use the content of this repository directly}{12}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}How to host on Github Pages ?}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}How to Document?}{16}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Inline formattings}{16}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Numbered and Bullet list}{16}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Hyperlinks}{16}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Code blocks}{16}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Tables}{17}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Sections}{17}{subsection.2.4.6}%
+\contentsline {section}{\numberline {2.5}This is a subheading}{17}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}This is a subsubheading}{17}{subsection.2.5.1}%
+\contentsline {subsubsection}{This is a paragraph}{17}{subsubsection*.11}%
+\contentsline {paragraph}{This is a part}{17}{paragraph*.12}%
+\contentsline {subparagraph}{This is a chapter}{17}{subparagraph*.13}%
+\contentsline {subsection}{\numberline {2.5.2}Roles}{17}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Directives}{18}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}module}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}module.dummycode}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}module.dummycode.some\_function}{21}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}module.dummycode.square}{22}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}module.dummycode.string\_reverse}{22}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}module.dummycode.GoogleVehicle}{22}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}module.dummycode.NumpyVehicle}{23}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}module.dummycode.SphinxVehicle}{24}{subsection.3.1.6}%
+\contentsline {section}{\numberline {3.2}module.submodule}{25}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}module.submodule.dummycode}{25}{subsection.3.2.1}%
+\contentsline {subsubsection}{module.submodule.dummycode.multiply}{25}{subsubsection*.27}%
+\contentsline {subsubsection}{module.submodule.dummycode.some\_function}{25}{subsubsection*.29}%
+\contentsline {subsubsection}{module.submodule.dummycode.string\_reverse}{26}{subsubsection*.31}%
+\contentsline {subsubsection}{module.submodule.dummycode.GoogleVehicle}{26}{subsubsection*.33}%
+\contentsline {subsubsection}{module.submodule.dummycode.NumpyVehicle}{27}{subsubsection*.37}%
+\contentsline {subsubsection}{module.submodule.dummycode.SphinxVehicle}{28}{subsubsection*.41}%
+\contentsline {chapter}{\numberline {4}Changelogs}{29}{chapter.4}%
+\contentsline {chapter}{\numberline {5}References}{31}{chapter.5}%
+\contentsline {chapter}{Python Module Index}{33}{section*.44}%
