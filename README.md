@@ -4,7 +4,7 @@ This repository is a **templatised** form for a quick documentation of any type 
 This serves as a quick documentation solution for a python module / toolkit (*python module* in this case) hosted on Github.
 Apart from this, it also serves as a one stop solution for understanding the documentation process in RTD format.
 
-The documented version of this repository can be found [here]().
+The documented version of this repository can be found [here](https://prasang-gupta.github.io/rtd-autodoc/).
 
 The various sections present are listed below:
 
